@@ -6,8 +6,10 @@
 </head>
 <body>
     <form action="https://api.telegram.org/bot<token>/sendMessage" method="post">
-        <p>ChatID</p>
-        <input type="text" name="chat_id"><br>
+        <label>ChatID:
+        <input type="text" name="chat_id">
+        </label>
+        <br>
         <p><textarea rows="10" cols="45" name="text"></textarea></p>
         <select name="parse_mode">
             <option value="Markdown">Markdown</option>

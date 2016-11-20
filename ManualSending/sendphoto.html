@@ -6,9 +6,10 @@
 </head>
 <body>
     <form action="https://api.telegram.org/bot<token>/sendphoto" enctype="multipart/form-data" method="post">
-        <p>ChatID</p>
-        <input type="text" name="chat_id"><br>
-        <input type="file" name="photo"><br>
+        <label>ChatID:
+        <input type="text" name="chat_id">
+        </label>
+        <p><input type="file" name="photo"></p>
         <input type="submit">
     </form>
 </body>
