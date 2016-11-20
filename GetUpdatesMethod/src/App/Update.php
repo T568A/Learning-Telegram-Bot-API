@@ -23,10 +23,13 @@ class Update
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
 
         $json = curl_exec($curl);
+
         if (curl_errno($curl)) {
-            return "Error: " . curl_error($curl);
+            throw new \Exception('Error: ' . curl_error($curl));;
         }
+
         curl_close($curl);
+        
         return json_decode($json);
     }
 }
