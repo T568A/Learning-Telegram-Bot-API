@@ -9,13 +9,19 @@ require_once __DIR__ . '/bootstrap/autoload.php';
 $config = require_once __DIR__ . '/config.php';
 $token = $config['token'];
 $updateId = 0;
+$message = [
+    '/start' => 'Start!',
+    '/help' => 'Relax',
+    '/settings' => 'oops,  is not ready yet'
+];
 
 try {
     while (true) {
-        $requests = (new Query($token, '/getUpdates', '?offset=' . $updateId))->getMethod();
+        $requests = Query::getMethod($token, '/getUpdates', '?offset=' . $updateId);
         if ($requests->ok === true && !empty($requests->result)) {
             $updateId = (end($requests->result))->update_id + 1;
-            Message::sendMessage($token, $requests);
+            // TODO: add arg arrray value
+            Message::sendMessage($token, $requests, $message);
         }
         sleep(15);
     }

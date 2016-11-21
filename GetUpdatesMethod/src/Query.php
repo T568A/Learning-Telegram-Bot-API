@@ -5,19 +5,16 @@ namespace Bot\App;
 
 class Query
 {
-    private $url;
+    private static $url;
 
-    public function __construct(string $token, string $path, string $query)
+    public static function getMethod(string $token, string $path, string $query)
     {
-        $this->url = 'https://api.telegram.org/bot' . $token . $path . $query;
-    }
+        self::$url = 'https://api.telegram.org/bot' . $token . $path . $query;
 
-    public function getMethod()
-    {
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-                CURLOPT_URL => $this->url,
+                CURLOPT_URL => self::$url,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_TIMEOUT => 30,
                 CURLOPT_SSL_VERIFYPEER => false,
