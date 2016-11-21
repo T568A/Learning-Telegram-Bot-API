@@ -8,8 +8,7 @@ use Bot\App\{
 
 require_once __DIR__ . '/bootstrap/autoload.php';
 
-$config = require_once __DIR__ . '/config.php';
-$token = $config['token'];
+$token = require_once __DIR__ . '/token.php';
 $updateId = 0;
 $message = [
     '/start' => 'Start!',
