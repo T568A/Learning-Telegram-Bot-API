@@ -2,15 +2,16 @@
 <?php
 declare(strict_types = 1);
 
-use Bot\App\Update;
+use Bot\App\{GetMessage};
 
 require_once __DIR__ . '/bootstrap/autoload.php';
 
 $config = require_once __DIR__ . '/config.php';
 
 try {
-    $obj = (new Update('https://api.telegram.org/bot' . $config['token'] . '/getUpdates'))->getUpdates();
-    if ($obj->ok) {
+    $obj = (new GetMessage('https://api.telegram.org/bot' . $config['token'] . '/getUpdates'))->getUpdates();
+    if (is_bool($obj->ok) && $obj->ok) {
+        var_dump($obj);
         foreach ($obj->result as $value) {
             echo 'chatID: ' . $value->message->chat->id . PHP_EOL;
             echo 'name: ' . $value->message->from->first_name . PHP_EOL;

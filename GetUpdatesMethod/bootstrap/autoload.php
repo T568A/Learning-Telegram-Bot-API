@@ -2,7 +2,7 @@
 
 spl_autoload_register(function ($class) {
 
-    $prefix = 'Bot\\';
+    $prefix = 'Bot\\App\\';
 
     $base_dir = __DIR__ . '/../src/';
 

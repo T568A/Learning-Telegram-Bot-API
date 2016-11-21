@@ -3,11 +3,11 @@ declare(strict_types = 1);
 
 namespace Bot\App;
 
-class Update
+class GetMessage
 {
     private $url;
 
-    public function __construct($url)
+    public function __construct(string $url)
     {
         $this->url = $url;
     }
@@ -16,11 +16,14 @@ class Update
     {
         $curl = curl_init();
 
-        curl_setopt($curl, CURLOPT_URL, $this->url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt_array($curl, [
+                CURLOPT_URL => $this->url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_SSL_VERIFYHOST => false
+            ]
+        );
 
         $json = curl_exec($curl);
 
@@ -29,7 +32,7 @@ class Update
         }
 
         curl_close($curl);
-        
+
         return json_decode($json);
     }
 }
