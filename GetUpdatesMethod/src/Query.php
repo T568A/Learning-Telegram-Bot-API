@@ -3,16 +3,16 @@ declare(strict_types = 1);
 
 namespace Bot\App;
 
-class GetMessage
+class Query
 {
     private $url;
 
-    public function __construct(string $url)
+    public function __construct(string $token, string $path, string $query)
     {
-        $this->url = $url;
+        $this->url = 'https://api.telegram.org/bot' . $token . $path . $query;
     }
 
-    public function getUpdates()
+    public function getMethod()
     {
         $curl = curl_init();
 
