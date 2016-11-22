@@ -6,14 +6,16 @@ namespace Bot\App;
 class Message
 {
 
-    public static function sendMessage($token, $requests, $message)
+    public static function sendMessage(string $token, \stdClass $requests, array $config)
     {
         foreach ($requests->result as $obj) {
-            $text   = $obj->message->text;
-            $chatId = $obj->message->chat->id;
+            $text       = $obj->message->text;
+            $chatId     = $obj->message->chat->id;
+            $message    = $config['message'];
+            $keyboard   = $config['keyboard'];
 
             if ($text === '/start' || $text === 'Start') {
-                if (Query::getMethod($token, '/sendMessage', '?chat_id=' . $chatId . '&text=' . $message['/start'] . '&reply_markup=' . Keyboard::getKeyboard())->ok !== true) {
+                if (Query::getMethod($token, '/sendMessage', '?chat_id=' . $chatId . '&text=' . $message['/start'] . '&reply_markup=' . Keyboard::getKeyboard($keyboard))->ok !== true) {
                     // TODO: add logging
                     echo 'start - FAIL!';
                 }

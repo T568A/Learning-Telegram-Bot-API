@@ -6,24 +6,14 @@ namespace Bot\App;
 class Keyboard
 {
 
-    public static function getKeyboard()
+    public static function getKeyboard($keyboard)
     {
-        $keyboard = [
-            [
-                'Start',
-                'Settings',
-                'Random',
-                'Help'
-            ]
-        ];
-
         $resp = [
             'keyboard' => $keyboard,
             'resize_keyboard' => true,
-            'one_time_keyboard' => true
+            'one_time_keyboard' => false
         ];
 
         return $encodedMarkup = json_encode($resp);
-
     }
 }
