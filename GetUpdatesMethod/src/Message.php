@@ -25,6 +25,13 @@ class Message
                     // TODO: add logging
                     echo 'settings - FAIL!';
                 }
+            }  else if ($obj->message->text === '/random') {
+                $len = count($message['/random']);
+                $random = $message['/random'][rand(0 , $len - 1)];
+                if (Query::getMethod($token, '/sendMessage', '?chat_id=' . $obj->message->chat->id . '&text=' . $random)->ok !== true) {
+                    // TODO: add logging
+                    echo 'random - FAIL!';
+                }
             }
         }
     }
