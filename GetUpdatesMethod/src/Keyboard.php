@@ -5,8 +5,7 @@ namespace Bot\App;
 
 class Keyboard
 {
-
-    public static function getKeyboard($keyboard)
+    public static function getKeyboard(array $keyboard)
     {
         $resp = [
             'keyboard' => $keyboard,

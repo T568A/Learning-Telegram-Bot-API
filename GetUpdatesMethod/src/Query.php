@@ -16,9 +16,7 @@ class Query
         curl_setopt_array($curl, [
                 CURLOPT_URL => self::$url,
                 CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_TIMEOUT => 30,
-                CURLOPT_SSL_VERIFYPEER => false,
-                CURLOPT_SSL_VERIFYHOST => false
+                CURLOPT_TIMEOUT => 30
             ]
         );
 

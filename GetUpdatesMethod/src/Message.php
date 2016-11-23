@@ -5,7 +5,6 @@ namespace Bot\App;
 
 class Message
 {
-
     public static function sendMessage(string $token, \stdClass $requests, array $config)
     {
         foreach ($requests->result as $obj) {
